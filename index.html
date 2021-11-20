@@ -2,100 +2,55 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <!-- charset -->
+    <meta charset="utf-8">
 
-    input[type=text],
-    input[type=email],
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-    }
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    label {
-      padding: 12px 12px 12px 0;
-      display: inline-block;
-    }
+    <!-- title -->
+    <title>Formulator</title>
 
-    input[type=submit] {
-      background-color: #04AA6D;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      float: left;
-      width: 100%;
-      margin-top: 0;
-    }
-
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-
-    .container {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-
-    .col {
-      float: left;
-      width: 100%;
-      margin-top: 0;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-  </style>
+    <!-- css style -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <h2>Formulator</h2>
-  <p>Cloudflare worker for form submission.</p>
+    <h2>Formulator</h2>
+    <p>Cloudflare worker for form submission.</p>
 
-  <div class="container">
-    <form action="/action_page.php">
-      <div class="row">
-        <div class="col">
-          <label for="name">Name</label>
-        </div>
-        <div class="col">
-          <input type="text" id="name" name="name" placeholder="Your name..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="email">Email</label>
-        </div>
-        <div class="col">
-          <input type="email" id="email" name="email" placeholder="Your email..">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <label for="message">Message</label>
-        </div>
-        <div class="col">
-          <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <input type="submit" value="Submit">
-      </div>
-    </form>
-  </div>
+    <div class="container">
+        <form action="/action_page.php">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="name" name="name" placeholder="Your name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col">
+                    <input type="email" id="email" name="email" placeholder="Your email..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="message">Message</label>
+                </div>
+                <div class="col">
+                    <textarea id="message" name="message" placeholder="Write something.."
+                        style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
