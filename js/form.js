@@ -1,3 +1,12 @@
+function get_value(object, key, default_value) {
+    var result = object[key];
+    return (typeof result !== "undefined") ? result : default_value;
+};
+
+function get_notification_text(response) {
+    return get_value(response.data, "detail", "Something went wrong.")
+};
+
 $(document).on("submit", "form.main-form", function (e) {
     e.preventDefault();
 
@@ -29,7 +38,7 @@ $(document).on("submit", "form.main-form", function (e) {
                 $(currentForm).trigger("reset");
 
                 // show returned success message
-                toastr.success("succ")
+                toastr.success(get_notification_text(response))
 
                 // enable submit button again
                 $("[type=submit]", currentForm).removeAttr("disabled");
@@ -38,7 +47,7 @@ $(document).on("submit", "form.main-form", function (e) {
         })
         .catch(function (error) {
             // show returned fail message
-            toastr.error("fail")
+            toastr.error(get_notification_text(error.response))
 
             // enable submit button again
             $("[type=submit]", currentForm).removeAttr("disabled");
