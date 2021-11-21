@@ -3,8 +3,37 @@ function get_value(object, key, default_value) {
     return (typeof result !== "undefined") ? result : default_value;
 };
 
+function titleCase(str) {
+    var splitStr = str.toLowerCase().split(',');
+    for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(",");
+}
+
 function get_notification_text(response) {
-    return get_value(response.data, "detail", "Something went wrong.")
+    let code = get_value(response.data, "code", "unknown");
+    let detail = get_value(response.data, "detail", "Something went wrong.");
+
+    if (code === "missing_required_fields") {
+        let errors = response.data["errors"];
+        let missing_required_fields = errors.map(({ field }) => field);
+        if (errors && errors.length) {
+            notification = "Missing required fields: " + titleCase(missing_required_fields.toString());
+        }
+    }
+    else if (code === "invalid_email_fields") {
+        let errors = response.data["errors"];
+        let invalid_email_fields = errors.map(({ field }) => field);
+        if (errors && errors.length) {
+            notification = "Invalid email fields: " + titleCase(invalid_email_fields.toString());
+        }
+    }
+    else {
+        notification = detail;
+    }
+
+    return notification
 };
 
 $(document).on("submit", "form.main-form", function (e) {
